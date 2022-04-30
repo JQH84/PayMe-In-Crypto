@@ -5,17 +5,18 @@
 
 ################################################################################
 # Imports
+from web3.gas_strategies.time_based import medium_gas_price_strategy
+from web3 import middleware
+from web3 import Account
+from bip44 import Wallet
 import os
 import requests
 from dotenv import load_dotenv
 load_dotenv()
-from bip44 import Wallet
-from web3 import Account
-from web3 import middleware
-from web3.gas_strategies.time_based import medium_gas_price_strategy
 
 ################################################################################
 # Wallet functionality
+
 
 def generate_account():
     """Create a digital wallet and Ethereum account from a mnemonic seed phrase."""
@@ -32,6 +33,7 @@ def generate_account():
     account = Account.privateKeyToAccount(private)
 
     return account
+
 
 def get_balance(w3, address):
     """Using an Ethereum account address access the balance of Ether"""
@@ -54,7 +56,8 @@ def send_transaction(w3, account, to, wage):
     value = w3.toWei(wage, "ether")
 
     # Calculate gas estimate
-    gasEstimate = w3.eth.estimateGas({"to": to, "from": account.address, "value": value})
+    gasEstimate = w3.eth.estimateGas(
+        {"to": to, "from": account.address, "value": value})
 
     # Construct a raw transaction
     raw_tx = {
