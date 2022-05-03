@@ -16,7 +16,7 @@ Since we are testing this on our own private blockchain via Ganache, we will dis
 
 below is a quick demo of the application with a test transaction hash and the same transaction hash on the Ganache console.
 
-![App Demo](/imgs/app_demo.gif)
+![App Demo](imgs/app_demo.gif)
 
 ## How to use it in your own development environment
 
